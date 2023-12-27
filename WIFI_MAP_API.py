@@ -145,4 +145,6 @@ def get_build():
         return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    with open('server.json', 'r') as file:
+        data = json.load(file)
+    app.run(host=data['host'], port=data['port'])
